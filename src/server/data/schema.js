@@ -9,6 +9,6 @@ type Query {
 }
 
 type Mutation {
-
+  createPerson(name: String!): Person
 }
 `;

@@ -3,6 +3,13 @@ const resolveFunctions = {
     people() {
       return people;
     }
+  },
+  Mutation: {
+    createPerson(_, { name }) {
+      const person = { id: people.length + 1, name };
+      people.push(person);
+      return person;
+    }
   }
 };
 

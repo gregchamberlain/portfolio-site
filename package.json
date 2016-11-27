@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.dev.js --exec babel-node --presets es2015,stage-2",
+    "start": "NODE_ENV='production' node dist/server/index.js",
+    "dev": "concurrently --kill-others 'npm run devServer' 'npm run devClient'",
+    "devServer": "nodemon src/server/index.js --exec babel-node --presets es2015,stage-2",
+    "devClient": "node tools/devServer.js",
     "buildServer": "NODE_ENV='production' ./node_modules/.bin/babel src/server --out-dir dist/server",
     "buildClient": "webpack --config webpack.config.prod.js --progress",
     "build": "npm run buildClient; npm run buildServer",
@@ -23,6 +25,7 @@
   },
   "homepage": "https://github.com/gregchamberlain/react-apollo-fullstack-skeleton#readme",
   "dependencies": {
+    "apollo-client": "^0.5.6",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
@@ -30,15 +33,22 @@
     "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.16.0",
     "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
+    "graphql": "^0.8.2",
     "graphql-server-express": "^0.4.3",
+    "graphql-tag": "^1.0.0",
     "graphql-tools": "^0.8.3",
     "nodemon": "^1.11.0",
     "react": "^15.4.1",
+    "react-apollo": "^0.6.0",
     "react-dom": "^15.4.1",
     "react-hot-loader": "^3.0.0-beta.2",
     "webpack": "^1.13.3",
     "webpack-dev-middleware": "^1.8.4",
     "webpack-hot-middleware": "^2.13.2"
+  },
+  "devDependencies": {
+    "concurrently": "^3.1.0"
   }
 }
