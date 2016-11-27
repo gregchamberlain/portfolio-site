@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import update from 'immutability-helper';
 
 class RocketForm extends Component {
   constructor(props) {
@@ -60,4 +61,24 @@ const mutation = gql`mutation CreateRocket($name: String!, $lifespan: String!, $
   }
 }`;
 
-export default graphql(mutation)(RocketForm);
+export default graphql(mutation, {
+  props({ ownProps, mutate }) {
+    return {
+      mutate({ variables }) {
+        return mutate({
+          variables,
+          updateQueries: {
+            Rockets: (prev, { mutationResult }) => {
+              const newRocket = mutationResult.data.createRocket;
+              return update(prev, {
+                rockets: {
+                  $push: [newRocket]
+                }
+              });
+            }
+          }
+        });
+      }
+    };
+  }
+})(RocketForm);

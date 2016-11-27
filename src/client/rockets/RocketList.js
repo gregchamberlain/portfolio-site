@@ -28,7 +28,7 @@ const RocketList = ({ data }) => (
   </div>
 );
 
-const query = gql`query {
+const query = gql`query Rockets {
   rockets {
     id
     name
