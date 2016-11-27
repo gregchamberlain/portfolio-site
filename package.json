@@ -9,6 +9,7 @@
     "buildServer": "NODE_ENV='production' ./node_modules/.bin/babel src/server --out-dir dist/server",
     "buildClient": "webpack --config webpack.config.prod.js --progress",
     "build": "npm run buildClient; npm run buildServer",
+    "heroku-postbuild": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,9 +26,7 @@
     "express": "^4.14.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-hot-loader": "^3.0.0-beta.2"
-  },
-  "devDependencies": {
+    "react-hot-loader": "^3.0.0-beta.2",
     "babel-cli": "^6.18.0",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",

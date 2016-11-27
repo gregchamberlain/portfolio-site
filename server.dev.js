@@ -5,7 +5,7 @@ var devMiddleware = require('webpack-dev-middleware');
 var hotMiddleware = require('webpack-hot-middleware');
 var config = require('./webpack.config');
 
-var app = express();
+var app = require('./src/server').default;
 var compiler = webpack(config);
 
 app.use(devMiddleware(compiler, {

@@ -1,7 +1,7 @@
 var path = require('path');
 var express = require('express');
 
-var app = express();
+var app = require('./dist/server').default;
 
 app.use('/static', express.static('dist/client'));
 
