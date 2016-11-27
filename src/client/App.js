@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 
-import Test from './test';
-
 class App extends Component {
 
   render() {
     return (
-    <div>
-      <Test />
-      This is my ap
-    </div>
+      <div>
+        <h1>Welcome to React Apollo Fullstack Skeleton!</h1>
+      </div>
     );
   }
 }
