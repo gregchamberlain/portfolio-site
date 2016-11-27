@@ -1,14 +1,16 @@
 export default `
-type Person {
+type Rocket {
   id: Int!
   name: String!
+  lifespan: String
+  mass: Float
 }
 
 type Query {
-  people: [Person]
+  rockets: [Rocket]
 }
 
 type Mutation {
-  createPerson(name: String!): Person
+  createRocket(name: String!, lifespan: String!, mass: Float!): Rocket
 }
 `;

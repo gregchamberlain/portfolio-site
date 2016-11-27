@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import PersonList from './PersonList';
+import RocketList from './rockets/RocketList';
+import RocketForm from './rockets/RocketForm';
 
 class App extends Component {
 
@@ -8,7 +9,8 @@ class App extends Component {
     return (
       <div>
         <h1>Welcome to React Apollo Fullstack Skeleton!</h1>
-        <PersonList />
+        <RocketForm />
+        <RocketList />
       </div>
     );
   }

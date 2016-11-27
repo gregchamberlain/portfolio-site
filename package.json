@@ -2,7 +2,7 @@
   "name": "react-apollo-fullstack-skeletion",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server/index.js",
   "scripts": {
     "start": "NODE_ENV='production' node dist/server/index.js",
     "dev": "concurrently --kill-others 'npm run devServer' 'npm run devClient'",
