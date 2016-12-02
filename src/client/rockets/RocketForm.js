@@ -3,14 +3,16 @@ import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import update from 'immutability-helper';
 
+const defaultState = {
+  name: '',
+  lifespan: '',
+  mass: ''
+};
+
 class RocketForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      name: '',
-      lifespan: '',
-      mass: 0
-    };
+    this.state = defaultState;
   }
 
   submit = e => {
@@ -20,6 +22,7 @@ class RocketForm extends Component {
       lifespan: this.state.lifespan,
       mass: Number(this.state.mass)
     }}).then(({ data }) => {
+      this.setState(defaultState);
       console.log(data);
     }).catch(err => {
       console.error(err);
