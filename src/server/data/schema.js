@@ -1,16 +1,26 @@
 export default `
-type Rocket {
-  id: Int!
+type Project {
+  id: ID!
   name: String!
-  lifespan: String
-  mass: Float
+  description: String!
+  githubUrl: String
+  liveUrl: String
+  skillsUsed: [String]
 }
 
 type Query {
-  rockets: [Rocket]
+  projects: [Project]
+}
+
+input ProjectInput {
+  name: String!
+  description: String!
+  githubUrl: String
+  liveUrl: String
+  skillsUsed: [String]
 }
 
 type Mutation {
-  createRocket(name: String!, lifespan: String!, mass: Float!): Rocket
+  createProject(project: ProjectInput!): Project
 }
 `;

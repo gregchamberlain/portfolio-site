@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 
-import RocketList from './rockets/RocketList';
-import RocketForm from './rockets/RocketForm';
+import ProjectIndex from './projects';
 
 class App extends Component {
 
   render() {
     return (
       <div>
-        <h1>Welcome to React Apollo Fullstack Skeleton!</h1>
-        <RocketForm />
-        <RocketList />
+        <ProjectIndex />
       </div>
     );
   }
