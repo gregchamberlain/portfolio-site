@@ -13,6 +13,12 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
 
+app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+
+app.use('/graphiql', graphiqlExpress({
+  endpointURL: '/graphql'
+}));
+
 if (process.env.NODE_ENV === 'production') {
   app.use('/static', express.static('dist/client'));
   app.get('*', function(req, res) {
@@ -22,12 +28,6 @@ if (process.env.NODE_ENV === 'production') {
   const cors = require('cors');
   app.use(cors());
 }
-
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-
-app.use('/graphiql', graphiqlExpress({
-  endpointURL: '/graphql'
-}));
 
 const PORT = process.env.PORT || 3001;
 
