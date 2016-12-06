@@ -1,0 +1,10 @@
+mutation UpdateJob($job: JobInput!) {
+  updateJob(job: $job) {
+    id
+    companyName
+    position
+    duration
+    location
+    highlights
+  }
+}

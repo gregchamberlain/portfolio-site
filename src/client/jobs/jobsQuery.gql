@@ -1,0 +1,10 @@
+query Jobs {
+  jobs {
+    id
+    companyName
+    position
+    duration
+    location
+    highlights
+  }
+}

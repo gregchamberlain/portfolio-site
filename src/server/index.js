@@ -13,8 +13,6 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
 
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
-
 app.use('/graphiql', graphiqlExpress({
   endpointURL: '/graphql'
 }));
@@ -29,8 +27,11 @@ if (process.env.NODE_ENV === 'production') {
   app.use(cors());
 }
 
+app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+
 const PORT = process.env.PORT || 3001;
 
+mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI, (mErr) =>  {
   if (mErr) return console.error(mErr);
   console.log('MongoDB Connected');

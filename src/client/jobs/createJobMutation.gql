@@ -1,0 +1,10 @@
+mutation CreateJob($job: JobInput!) {
+  createJob(job: $job) {
+    id
+    companyName
+    position
+    duration
+    location
+    highlights
+  }
+}

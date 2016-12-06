@@ -1,14 +1,23 @@
 import React, { Component } from 'react';
+import { HashRouter, Match, Link } from 'react-router';
 
 import ProjectIndex from './projects';
+import JobIndex from './jobs';
 
 class App extends Component {
 
   render() {
     return (
-      <div>
-        <ProjectIndex />
-      </div>
+      <HashRouter>
+        <div>
+          <Link to="/">Home</Link>
+          <Link to="/projects">Projects</Link>
+          <Link to="/experience">Experience</Link>
+          <Match exactly pattern="/" component={ProjectIndex} />
+          <Match exactly pattern="/projects" component={ProjectIndex} />
+          <Match exactly pattern="/experience" component={JobIndex} />
+        </div>
+      </HashRouter>
     );
   }
 }

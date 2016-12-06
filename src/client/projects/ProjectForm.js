@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import update from 'immutability-helper';
+
+import createProjectMutation from './createProjectMutation.gql';
+import updateProjectMutation from './updateProjectMutation.gql';
 
 const blankProject = {
   name: '',
@@ -15,18 +18,40 @@ class ProjectForm extends Component {
 
   constructor(props) {
     super(props);
+    let project;
+    if (props.project) {
+      project = Object.assign(props.project);
+      delete project.__typename;
+    } else {
+      project = blankProject;
+    }
     this.state = {
-      project: blankProject
+      project: project
     };
   }
 
+  componentWillReceiveProps(props) {
+    if (props.project && !this.props.project) {
+      const project = Object.assign(props.project);
+      delete project.__typename;
+      this.setState({ project });
+    }
+  }
+
   submit = e => {
-    e.preventDefault();
-    this.props.create(this.state.project).then(({ data }) => {
-      this.setState({ project: blankProject });
-    }).catch(err => {
-      console.error(err);
-    });
+    if (this.props.project) {
+      this.props.update(this.state.project).then(({ data }) => {
+        this.props.onUpdate();
+      }).catch(err => {
+        console.error(err);
+      });
+    } else {
+      this.props.create(this.state.project).then(({ data }) => {
+        this.setState({ project: blankProject });
+      }).catch(err => {
+        console.error(err);
+      });
+    }
   }
 
   updateProject = name => e => {
@@ -89,31 +114,48 @@ class ProjectForm extends Component {
   }
 }
 
-const createProjectMutation = gql`mutation CreateProject($project: ProjectInput!) {
-  createProject(project: $project) {
-    id
-    name
-    description
-    githubUrl
-    liveUrl
-    skillsUsed
-  }
-}`;
 
-export default graphql(createProjectMutation, {
-  props: ({ mutate }) => ({
-    create: (project) => mutate({
-      variables: { project },
-      updateQueries: {
-        Projects(prev, { mutationResult }) {
-          const newProject = mutationResult.data.createProject;
-          return update(prev, {
-            projects: {
-              $push: [newProject]
-            }
-          });
+export default compose(
+  graphql(createProjectMutation, {
+    props: ({ mutate }) => ({
+      create: (project) => mutate({
+        variables: { project },
+        updateQueries: {
+          Projects(prev, { mutationResult }) {
+            const newProject = mutationResult.data.createProject;
+            return update(prev, {
+              projects: {
+                $push: [newProject]
+              }
+            });
+          }
         }
-      }
+      })
+    })
+  }),
+  graphql(updateProjectMutation, {
+    props: ({ mutate }) => ({
+      update: (project) => mutate({
+        variables: { project }
+      })
     })
   })
-})(ProjectForm);
+)(ProjectForm);
+
+// export default graphql(createProjectMutation, {
+//   props: ({ mutate }) => ({
+//     create: (project) => mutate({
+//       variables: { project },
+//       updateQueries: {
+//         Projects(prev, { mutationResult }) {
+//           const newProject = mutationResult.data.createProject;
+//           return update(prev, {
+//             projects: {
+//               $push: [newProject]
+//             }
+//           });
+//         }
+//       }
+//     })
+//   })
+// })(ProjectForm);
