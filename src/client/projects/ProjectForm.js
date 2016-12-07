@@ -87,7 +87,8 @@ class ProjectForm extends Component {
 
   setImage = urls => {
     this.setState(update(this.state, {
-      project: { image: { $set: urls[0 ] } }
+      project: { image: { $set: urls[0 ] } },
+      isModalOpen: { $set: false }
     }), () => console.log(this.state));
   }
 
