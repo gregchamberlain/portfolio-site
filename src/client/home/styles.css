@@ -1,16 +1,33 @@
 :local .background {
   position: relative;
   height: 100vh;
-  background-color: #ccc;
+  background-image:
+    linear-gradient(
+      to top right,
+      #333, #555
+    );
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
+  color: #eee;
+}
+
+:local .name {
+  margin: 5px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+:local .title {
+  font-size: 16px;
 }
 
 :local .image {
   width: 250px;
   height: 250px;
   z-index: 2;
+  margin: 10px;
   border-radius: 50%;
   background-size: 350px auto;
   background-position: 50% 25%;
@@ -21,6 +38,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  width: 10vw;
-  height: 10vw;
+  width: 8vw;
+  height: 8vw;
 }

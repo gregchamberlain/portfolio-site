@@ -11,9 +11,9 @@ class App extends Component {
     return (
       <HashRouter>
         <div>
-          <Link to="/">Home</Link>
+          {/* <Link to="/">Home</Link>
           <Link to="/projects">Projects</Link>
-          <Link to="/experience">Experience</Link>
+          <Link to="/experience">Experience</Link> */}
           <Match exactly pattern="/" component={Home} />
           <Match exactly pattern="/projects" component={ProjectIndex} />
           <Match exactly pattern="/experience" component={JobIndex} />

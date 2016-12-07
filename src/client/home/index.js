@@ -16,6 +16,8 @@ import cssIcon from '../assets/icons/css.png';
 const Home = () => (
   <div className={styles.background}>
     <div className={styles.image} style={{ backgroundImage: `url(${profileSrc})`}}/>
+    <div className={styles.name}>Greg Chamberlain</div>
+    <div className={styles.title}>Software Developer</div>
     <div className={styles.icon} style={{ backgroundImage: `url(${apolloIcon})`, top: '10%', left: '35%'}}/>
     <div className={styles.icon} style={{ backgroundImage: `url(${reactIcon})`, top: '10%', right: '35%'}}/>
     <div className={styles.icon} style={{ backgroundImage: `url(${reduxIcon})`, bottom: '10%', left: '35%'}}/>
