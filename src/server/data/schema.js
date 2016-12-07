@@ -6,6 +6,7 @@ type Project {
   githubUrl: String
   liveUrl: String
   skillsUsed: [String]
+  image: String
 }
 
 type Job {
@@ -29,6 +30,7 @@ input ProjectInput {
   githubUrl: String
   liveUrl: String
   skillsUsed: [String]
+  image: String
 }
 
 input JobInput {
@@ -40,10 +42,16 @@ input JobInput {
   highlights: [String]
 }
 
+input FileInput {
+  name: String!
+  type: String!
+}
+
 type Mutation {
   createProject(project: ProjectInput!): Project
   updateProject(project: ProjectInput!): Project
   createJob(job: JobInput!): Job
   updateJob(job: JobInput!): Job
+  getSignedUrls(files: [FileInput]!): [String]
 }
 `;

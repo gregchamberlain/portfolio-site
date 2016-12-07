@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
+import favicon from 'serve-favicon';
 import mongoose from 'mongoose';
 import { graphqlExpress, graphiqlExpress } from 'graphql-server-express';
 import { makeExecutableSchema } from 'graphql-tools';
@@ -12,6 +13,8 @@ import resolvers from './data/resolvers';
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
+
+app.use(favicon(path.join(__dirname, '../../logo.ico')));
 
 app.use('/graphiql', graphiqlExpress({
   endpointURL: '/graphql'

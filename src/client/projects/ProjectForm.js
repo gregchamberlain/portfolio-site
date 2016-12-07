@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import update from 'immutability-helper';
+import UploadModal from 'react-s3-upload-modal';
 
 import createProjectMutation from './createProjectMutation.gql';
 import updateProjectMutation from './updateProjectMutation.gql';
@@ -11,7 +12,8 @@ const blankProject = {
   description: '',
   githubUrl: '',
   liveUrl: '',
-  skillsUsed: []
+  skillsUsed: [],
+  image: null
 };
 
 class ProjectForm extends Component {
@@ -26,7 +28,8 @@ class ProjectForm extends Component {
       project = blankProject;
     }
     this.state = {
-      project: project
+      project: project,
+      isModalOpen: false
     };
   }
 
@@ -78,8 +81,18 @@ class ProjectForm extends Component {
     }));
   }
 
+  setModal = bool => e => {
+    this.setState({ isModalOpen: bool });
+  }
+
+  setImage = urls => {
+    this.setState(update(this.state, {
+      project: { image: { $set: urls[0 ] } }
+    }), () => console.log(this.state));
+  }
+
   render() {
-    const { name, description, githubUrl, liveUrl, skillsUsed } = this.state.project;
+    const { name, description, githubUrl, liveUrl, skillsUsed, image } = this.state.project;
     return (
       <div>
         <div>
@@ -108,12 +121,25 @@ class ProjectForm extends Component {
           ))}
           <button onClick={this.addSkill}>Add Skill</button>
         </div>
+        <div>
+          <label>Image</label>
+          <img src={image} alt="Image" width={50} height={50} onClick={this.setModal(true)}/>
+          <UploadModal
+            isOpen={this.state.isModalOpen}
+            onRequestClose={this.setModal(false)}
+            getSignedUrls={this.props.getSignedUrls}
+            onComplete={this.setImage}
+          />
+        </div>
         <button onClick={this.submit}>Save</button>
       </div>
     );
   }
 }
 
+const getSignedUrls = gql`mutation GetSignedUrls($files: [FileInput]!) {
+  getSignedUrls(files: $files)
+}`;
 
 export default compose(
   graphql(createProjectMutation, {
@@ -139,23 +165,12 @@ export default compose(
         variables: { project }
       })
     })
+  }),
+  graphql(getSignedUrls, {
+    props: ({ mutate}) => ({
+      getSignedUrls: (files) => mutate({
+        variables: { files }
+      }).then(({ data }) => data.getSignedUrls)
+    })
   })
 )(ProjectForm);
-
-// export default graphql(createProjectMutation, {
-//   props: ({ mutate }) => ({
-//     create: (project) => mutate({
-//       variables: { project },
-//       updateQueries: {
-//         Projects(prev, { mutationResult }) {
-//           const newProject = mutationResult.data.createProject;
-//           return update(prev, {
-//             projects: {
-//               $push: [newProject]
-//             }
-//           });
-//         }
-//       }
-//     })
-//   })
-// })(ProjectForm);

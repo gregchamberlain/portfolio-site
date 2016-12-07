@@ -6,5 +6,6 @@ mutation UpdateProject($project: ProjectInput!) {
     githubUrl
     liveUrl
     skillsUsed
+    image
   }
 }

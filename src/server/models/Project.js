@@ -5,7 +5,8 @@ const ProjectSchema = new mongoose.Schema({
   description: { type: String, required: true },
   githubUrl: String,
   liveUrl: String,
-  skillsUsed: [String]
+  skillsUsed: [String],
+  image: String
 }, {
   timestamps: true
 });

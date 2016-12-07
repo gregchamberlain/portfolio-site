@@ -1,4 +1,6 @@
 import { Project, Job } from '../models';
+import aws from 'aws-sdk';
+const s3 = new aws.S3();
 
 const resolveFunctions = {
   Query: {
@@ -21,6 +23,18 @@ const resolveFunctions = {
     },
     updateJob(_, { job }) {
       return Job.findByIdAndUpdate(job.id, job, {new: true});
+    },
+    getSignedUrls(_, { files }) {
+      return files.map(file => {
+        const params = {
+          Bucket: 'gregchamberlain-portfolio',
+          Key: file.name,
+          Expires: 60,
+          ContentType: file.type,
+          ACL: 'public-read'
+        };
+        return s3.getSignedUrl('putObject', params);
+      });
     }
   }
 };

@@ -1,0 +1,8 @@
+fragment ProjectFragment on Project {
+  id
+  name
+  description
+  githubUrl
+  liveUrl
+  skillsUsed
+}

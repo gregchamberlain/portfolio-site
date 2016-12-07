@@ -6,5 +6,6 @@ query Projects {
     githubUrl
     liveUrl
     skillsUsed
+    image
   }
 }
