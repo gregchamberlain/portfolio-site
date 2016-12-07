@@ -2,6 +2,7 @@ import React from 'react';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
+import './styles.css';
 import App from './App';
 
 let config;

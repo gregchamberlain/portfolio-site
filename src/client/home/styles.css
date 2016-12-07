@@ -1,0 +1,26 @@
+:local .background {
+  position: relative;
+  height: 100vh;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:local .image {
+  width: 250px;
+  height: 250px;
+  z-index: 2;
+  border-radius: 50%;
+  background-size: 350px auto;
+  background-position: 50% 25%;
+}
+
+:local .icon {
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 10vw;
+  height: 10vw;
+}
