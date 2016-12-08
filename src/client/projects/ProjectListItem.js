@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Github from 'react-icons/lib/go/mark-github';
-import Eye from 'react-icons/lib/go/device-desktop';
+import Eye from 'react-icons/lib/md/remove-red-eye';
 
 import Npm from '../assets/npmIcon.js';
 import styles from './styles.css';
