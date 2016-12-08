@@ -12,22 +12,26 @@ import jsIcon from '../assets/icons/js.png';
 import gitIcon from '../assets/icons/git.png';
 import railsIcon from '../assets/icons/rails.png';
 import cssIcon from '../assets/icons/css.png';
+import ProjectSection from './ProjectSection';
 
 const Home = () => (
-  <div className={styles.background}>
-    <div className={styles.image} style={{ backgroundImage: `url(${profileSrc})`}}/>
-    <div className={styles.name}>Greg Chamberlain</div>
-    <div className={styles.title}>Software Developer</div>
-    <div className={styles.icon} style={{ backgroundImage: `url(${apolloIcon})`, top: '10%', left: '35%'}}/>
-    <div className={styles.icon} style={{ backgroundImage: `url(${reactIcon})`, top: '10%', right: '35%'}}/>
-    <div className={styles.icon} style={{ backgroundImage: `url(${reduxIcon})`, bottom: '10%', left: '35%'}}/>
-    <div className={styles.icon} style={{ backgroundImage: `url(${htmlIcon})`, bottom: '10%', right: '35%'}}/>
-    <div className={styles.icon} style={{ backgroundImage: `url(${nodeIcon})`, top: '25%', left: '20%'}}/>
-    <div className={styles.icon} style={{ backgroundImage: `url(${graphqlIcon})`, top: '25%', right: '20%'}}/>
-    <div className={styles.icon} style={{ backgroundImage: `url(${jsIcon})`, bottom: '25%', left: '20%'}}/>
-    <div className={styles.icon} style={{ backgroundImage: `url(${railsIcon})`, bottom: '25%', right: '20%'}}/>
-    <div className={styles.icon} style={{ backgroundImage: `url(${gitIcon})`, top: 'calc(50% - 5vw)', left: '5%'}}/>
-    <div className={styles.icon} style={{ backgroundImage: `url(${cssIcon})`, top: 'calc(50% - 5vw)', right: '5%'}}/>
+  <div>
+    <div className={styles.background}>
+      <div className={styles.image} style={{ backgroundImage: `url(${profileSrc})`}}/>
+      <div className={styles.name}>Greg Chamberlain</div>
+      <div className={styles.title}>Software Developer</div>
+      <div className={styles.icon} style={{ backgroundImage: `url(${apolloIcon})`, top: '10%', left: '35%'}}/>
+      <div className={styles.icon} style={{ backgroundImage: `url(${reactIcon})`, top: '10%', right: '35%'}}/>
+      <div className={styles.icon} style={{ backgroundImage: `url(${reduxIcon})`, bottom: '10%', left: '35%'}}/>
+      <div className={styles.icon} style={{ backgroundImage: `url(${htmlIcon})`, bottom: '10%', right: '35%'}}/>
+      <div className={styles.icon} style={{ backgroundImage: `url(${nodeIcon})`, top: '25%', left: '20%'}}/>
+      <div className={styles.icon} style={{ backgroundImage: `url(${graphqlIcon})`, top: '25%', right: '20%'}}/>
+      <div className={styles.icon} style={{ backgroundImage: `url(${jsIcon})`, bottom: '25%', left: '20%'}}/>
+      <div className={styles.icon} style={{ backgroundImage: `url(${railsIcon})`, bottom: '25%', right: '20%'}}/>
+      <div className={styles.icon} style={{ backgroundImage: `url(${gitIcon})`, top: 'calc(50% - 5vw)', left: '5%'}}/>
+      <div className={styles.icon} style={{ backgroundImage: `url(${cssIcon})`, top: 'calc(50% - 5vw)', right: '5%'}}/>
+    </div>
+    <ProjectSection />
   </div>
 );
 

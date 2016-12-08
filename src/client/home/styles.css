@@ -41,3 +41,19 @@
   width: 8vw;
   height: 8vw;
 }
+
+:local .section {
+  padding: 40px 60px;
+}
+
+:local .sectionHeader {
+  margin: 0;
+  margin-bottom: 20px;
+  font-size: 48px;
+  text-align: center;
+}
+
+:local .projects {
+  background-color: #eee;
+  color: #333;
+}

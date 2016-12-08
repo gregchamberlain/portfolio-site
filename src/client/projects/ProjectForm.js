@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { graphql, compose } from 'react-apollo';
 import gql from 'graphql-tag';
 import update from 'immutability-helper';
+import Chips from 'react-chips';
 import UploadModal from 'react-s3-upload-modal';
 
+import styles from './styles.css';
 import createProjectMutation from './createProjectMutation.gql';
 import updateProjectMutation from './updateProjectMutation.gql';
 
@@ -63,21 +65,9 @@ class ProjectForm extends Component {
     }));
   }
 
-  addSkill = () => {
+  updateSkills = value => {
     this.setState(update(this.state, {
-      project: { skillsUsed: { $push: [''] }}
-    }));
-  }
-
-  updateSkill = idx => e => {
-    this.setState(update(this.state, {
-      project: { skillsUsed: { [idx]: { $set: e.target.value } } }
-    }));
-  }
-
-  removeSkill = idx => () => {
-    this.setState(update(this.state, {
-      projects: { skillsUsed: { $splice: [[idx, 1] ] } }
+      project: { skillsUsed: { $set: value } }
     }));
   }
 
@@ -95,36 +85,9 @@ class ProjectForm extends Component {
   render() {
     const { name, description, githubUrl, liveUrl, skillsUsed, image } = this.state.project;
     return (
-      <div>
+      <div className={styles.container}>
         <div>
-          <label>Name</label>
-          <input type="text" onChange={this.updateProject('name')} value={name} />
-        </div>
-        <div>
-          <label>Description</label>
-          <textarea onChange={this.updateProject('description')} value={description} />
-        </div>
-        <div>
-          <label>Github URL</label>
-          <input type="text" onChange={this.updateProject('githubUrl')} value={githubUrl} />
-        </div>
-        <div>
-          <label>Live URL</label>
-          <input type="text" onChange={this.updateProject('liveUrl')} value={liveUrl} />
-        </div>
-        <div>
-          <label>Skills Used</label>
-          {skillsUsed.map((skill, idx) => (
-            <div key={`skill-${idx}`}>
-              <input type="text" onChange={this.updateSkill(idx)} value={skill} />
-              <button onClick={this.removeSkill(idx)}>X</button>
-            </div>
-          ))}
-          <button onClick={this.addSkill}>Add Skill</button>
-        </div>
-        <div>
-          <label>Image</label>
-          <img src={image} alt="Image" width={50} height={50} onClick={this.setModal(true)}/>
+          <img src={image} alt="Image" width={50} height={50} onClick={this.setModal(true)} className={styles.image}/>
           <UploadModal
             isOpen={this.state.isModalOpen}
             onRequestClose={this.setModal(false)}
@@ -132,7 +95,34 @@ class ProjectForm extends Component {
             onComplete={this.setImage}
           />
         </div>
-        <button onClick={this.submit}>Save</button>
+        <div className={styles.info}>
+          <div className={styles.name}>
+            <label>Name</label>
+            <input type="text" onChange={this.updateProject('name')} value={name} />
+            <div className="spacer"/>
+            <div>
+              <label>Github URL</label>
+              <input type="text" onChange={this.updateProject('githubUrl')} value={githubUrl} />
+            </div>
+            <div>
+              <label>Live URL</label>
+              <input type="text" onChange={this.updateProject('liveUrl')} value={liveUrl} />
+            </div>
+          </div>
+          <div>
+            <label>Description</label>
+            <textarea onChange={this.updateProject('description')} value={description} />
+          </div>
+          <div>
+            <label>Skills Used</label>
+            <Chips
+              value={this.state.project.skillsUsed}
+              onChange={this.updateSkills}
+              fromSuggestionsOnly={false}
+            />
+          </div>
+          <button onClick={this.submit}>Save</button>
+        </div>
       </div>
     );
   }
