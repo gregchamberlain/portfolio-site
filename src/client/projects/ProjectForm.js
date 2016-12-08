@@ -87,7 +87,7 @@ class ProjectForm extends Component {
     return (
       <div className={styles.container}>
         <div>
-          <img src={image} alt="Image" width={50} height={50} onClick={this.setModal(true)} className={styles.image}/>
+          <img src={image} alt="Image" onClick={this.setModal(true)} className={styles.image}/>
           <UploadModal
             isOpen={this.state.isModalOpen}
             onRequestClose={this.setModal(false)}
