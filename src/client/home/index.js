@@ -13,6 +13,7 @@ import gitIcon from '../assets/icons/git.png';
 import railsIcon from '../assets/icons/rails.png';
 import cssIcon from '../assets/icons/css.png';
 import ProjectSection from './ProjectSection';
+import JobSection from './JobSection';
 
 const Home = () => (
   <div>
@@ -32,6 +33,7 @@ const Home = () => (
       <div className={styles.icon} style={{ backgroundImage: `url(${cssIcon})`, top: 'calc(50% - 5vw)', right: '5%'}}/>
     </div>
     <ProjectSection />
+    <JobSection />
   </div>
 );
 

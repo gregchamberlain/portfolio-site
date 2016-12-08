@@ -8,7 +8,7 @@ const resolveFunctions = {
       return Project.find();
     },
     jobs() {
-      return Job.find();
+      return Job.find({}, null, { sort: '-createdAt' });
     }
   },
   Mutation: {

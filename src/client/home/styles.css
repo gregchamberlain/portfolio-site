@@ -57,3 +57,8 @@
   background-color: #eee;
   color: #333;
 }
+
+:local .jobs {
+  background: #333;
+  color: #eee;
+}
