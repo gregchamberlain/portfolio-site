@@ -21,6 +21,12 @@ type Job {
 }
 
 type Query {
+  name: String
+  about: String
+  phone: String
+  email: String
+  linkedIn: String
+  github: String
   projects: [Project]
   jobs: [Job]
 }

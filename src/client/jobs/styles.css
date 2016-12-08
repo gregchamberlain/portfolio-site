@@ -1,0 +1,20 @@
+:local .container {
+  padding: 16px 0;
+  border-top: 1px dashed #eee;
+}
+
+:local .row {
+  display: flex;
+  padding: 5px;
+  align-items: center;
+}
+
+:local .company {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+:local .position  {
+  font-size: 18px;
+  font-weight: bold;
+}

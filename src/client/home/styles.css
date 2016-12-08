@@ -19,6 +19,13 @@
   font-weight: bold;
 }
 
+:local .link {
+  text-decoration: none;
+  color: #eee;
+  font-size: 36px;
+  margin: 0 5px;
+}
+
 :local .title {
   font-size: 16px;
 }
@@ -44,6 +51,7 @@
 
 :local .section {
   padding: 40px 100px;
+  font-size: 18px;
 }
 
 :local .sectionHeader {
@@ -54,11 +62,24 @@
 }
 
 :local .projects {
-  background-color: #eee;
-  color: #333;
+  background-color: #3F51B5;
+  color: #eee;
 }
 
 :local .jobs {
-  background: #333;
+  background: #673AB7;
   color: #eee;
+}
+
+:local .about {
+  text-align: center;
+  background-color: #2196F3;
+  color: #eee;
+}
+
+:local .contact {
+  background-color: #9C27B0;
+  color: #eee;
+  text-align: center;
+  font-size: 24px;
 }

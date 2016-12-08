@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import JobForm from './JobForm';
+import styles from './styles.css';
 
 class JobListItem extends Component {
   constructor(props) {
@@ -21,11 +22,17 @@ class JobListItem extends Component {
     if (this.state.isEditing) return <JobForm job={job} onUpdate={this.setEditing(false)}/>;
 
     return (
-      <div>
-        <h3>{job.companyName}</h3>
-        <h4>{job.position}</h4>
-        <p>{job.duration}</p>
-        <p>{job.location}</p>
+      <div className={styles.container}>
+        <div className={styles.row}>
+          <div className={styles.company}>{job.companyName}</div>
+          <div className="spacer" />
+          <div>{job.duration}</div>
+        </div>
+        <div className={styles.row}>
+          <div className={styles.position}>{job.position}</div>
+          <div className="spacer" />
+          <div>{job.location}</div>
+        </div>
         <ul>
           { job.highlights.map((highlight, idx) => (
             <li key={`${job.id}-${idx}`}>{highlight}</li>
