@@ -2,10 +2,10 @@ import React from 'react';
 
 import ProjectListItem from './ProjectListItem';
 
-const ProjectList = ({ projects }) => (
+const ProjectList = ({ projects, readOnly }) => (
   <div>
     {projects.map(project => (
-      <ProjectListItem key={project.id} project={project} />
+      <ProjectListItem key={project.id} project={project} readOnly={readOnly} />
     ))}
   </div>
 );

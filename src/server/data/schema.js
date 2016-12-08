@@ -6,6 +6,8 @@ type Project {
   githubUrl: String
   liveUrl: String
   skillsUsed: [String]
+  npmName: String
+  npmDownloads(period: String!): Int
   image: String
 }
 
@@ -29,6 +31,7 @@ input ProjectInput {
   description: String!
   githubUrl: String
   liveUrl: String
+  npmName: String
   skillsUsed: [String]
   image: String
 }

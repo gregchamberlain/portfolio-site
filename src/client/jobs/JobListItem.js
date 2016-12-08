@@ -31,7 +31,7 @@ class JobListItem extends Component {
             <li key={`${job.id}-${idx}`}>{highlight}</li>
           ))}
         </ul>
-        <button onClick={this.setEditing(true)}>Edit</button>
+        { this.props.readOnly ? null : <button onClick={this.setEditing(true)}>Edit</button> }
       </div>
     );
   }

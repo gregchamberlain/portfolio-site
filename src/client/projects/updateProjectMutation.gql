@@ -5,6 +5,8 @@ mutation UpdateProject($project: ProjectInput!) {
     description
     githubUrl
     liveUrl
+    npmName
+    monthDownloads: npmDownloads(period: "last-month")
     skillsUsed
     image
   }

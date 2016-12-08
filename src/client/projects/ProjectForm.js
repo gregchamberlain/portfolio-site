@@ -14,6 +14,7 @@ const blankProject = {
   description: '',
   githubUrl: '',
   liveUrl: '',
+  npmName: '',
   skillsUsed: [],
   image: null
 };
@@ -24,8 +25,9 @@ class ProjectForm extends Component {
     super(props);
     let project;
     if (props.project) {
-      project = Object.assign(props.project);
+      project = Object.assign({}, blankProject, props.project);
       delete project.__typename;
+      delete project.monthDownloads;
     } else {
       project = blankProject;
     }
@@ -37,7 +39,7 @@ class ProjectForm extends Component {
 
   componentWillReceiveProps(props) {
     if (props.project && !this.props.project) {
-      const project = Object.assign(props.project);
+      const project = Object.assign({}, blankProject, props.project);
       delete project.__typename;
       this.setState({ project });
     }
@@ -83,7 +85,7 @@ class ProjectForm extends Component {
   }
 
   render() {
-    const { name, description, githubUrl, liveUrl, skillsUsed, image } = this.state.project;
+    const { name, description, githubUrl, liveUrl, npmName, skillsUsed, image } = this.state.project;
     return (
       <div className={styles.container}>
         <div>
@@ -102,16 +104,20 @@ class ProjectForm extends Component {
             <div className="spacer"/>
             <div>
               <label>Github URL</label>
-              <input type="text" onChange={this.updateProject('githubUrl')} value={githubUrl} />
+              <input type="text" onChange={this.updateProject('githubUrl')} value={githubUrl || ''} />
             </div>
             <div>
               <label>Live URL</label>
-              <input type="text" onChange={this.updateProject('liveUrl')} value={liveUrl} />
+              <input type="text" onChange={this.updateProject('liveUrl')} value={liveUrl || ''} />
+            </div>
+            <div>
+              <label>NPM Name</label>
+              <input type="text" onChange={this.updateProject('npmName')} value={npmName || ''} />
             </div>
           </div>
           <div>
             <label>Description</label>
-            <textarea onChange={this.updateProject('description')} value={description} />
+            <textarea onChange={this.updateProject('description')} value={description || ''} />
           </div>
           <div>
             <label>Skills Used</label>
@@ -121,6 +127,7 @@ class ProjectForm extends Component {
               fromSuggestionsOnly={false}
             />
           </div>
+          <button onClick={this.props.onUpdate}>Cancel</button>
           <button onClick={this.submit}>Save</button>
         </div>
       </div>

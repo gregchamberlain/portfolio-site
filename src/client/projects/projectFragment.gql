@@ -4,5 +4,7 @@ fragment ProjectFragment on Project {
   description
   githubUrl
   liveUrl
+  npmName
+  monthDownloads: npmDownloads(period: "last-month")
   skillsUsed
 }

@@ -1,6 +1,6 @@
 :local .container {
   display: flex;
-  padding: 15px 25px;
+  padding: 20px 0;
   /*background-color: #333;*/
   /*color: #eee;*/
   align-items: center;
@@ -21,12 +21,13 @@
   font-size: 32px;
   margin: 10px;
   color: inherit;
+  cursor: pointer;
 }
 
 :local .name {
   font-weight: bold;
   font-size: 24px;
-  margin: 20px 0;
+  margin: 10px 0;
   display: flex;
   align-items: center;
 }

@@ -5,6 +5,8 @@ query Projects {
     description
     githubUrl
     liveUrl
+    npmName
+    monthDownloads: npmDownloads(period: "last-month")
     skillsUsed
     image
   }

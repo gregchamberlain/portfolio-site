@@ -2,10 +2,10 @@ import React from 'react';
 
 import JobListItem from './JobListItem';
 
-const JobList = ({ jobs }) => (
+const JobList = ({ jobs, readOnly }) => (
   <div>
     {jobs.map(job => (
-      <JobListItem key={job.id} job={job} />
+      <JobListItem key={job.id} job={job} readOnly={readOnly}/>
     ))}
   </div>
 );

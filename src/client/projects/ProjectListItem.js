@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Github from 'react-icons/lib/go/mark-github';
 import Eye from 'react-icons/lib/go/device-desktop';
 
+import Npm from '../assets/npmIcon.js';
 import styles from './styles.css';
 import ProjectForm from './ProjectForm';
 
@@ -31,11 +32,20 @@ class ProjectListItem extends Component {
             {project.name}
             <div className="spacer" />
             { project.githubUrl ? <a href={project.githubUrl} target="_blank" className={styles.link} title="Github"><Github /></a> : null }
+            { project.npmName ? (
+              <a
+              href={`https://www.npmjs.org/${project.npmName}`}
+              target="_blank"
+              className={styles.link}
+              title="NPM / Downloads This month">
+              <Npm downloads={project.monthDownloads}/>
+              </a>
+            ) : null }
             { project.liveUrl ? <a href={project.liveUrl} target="_blank" className={styles.link} title="Live Link"><Eye /></a> : null }
           </div>
+          <div>{project.skillsUsed.join(', ')}</div>
           <p>{project.description}</p>
-          <div>Skills: {project.skillsUsed.join(', ')}</div>
-          <button onClick={this.setEditing(true)}>Edit</button>
+          { this.props.readOnly ? null : <button onClick={this.setEditing(true)}>Edit</button> }
         </div>
       </div>
     );

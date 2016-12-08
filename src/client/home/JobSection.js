@@ -9,7 +9,7 @@ import styles from './styles.css';
 const JobSection = ({ data }) => (
   <div className={`${styles.section} ${styles.jobs}`}>
     <h1 className={styles.sectionHeader}>Work Experience</h1>
-    { data.loading ? 'Loading...' : <JobList jobs={data.jobs} /> }
+    { data.loading ? 'Loading...' : <JobList jobs={data.jobs} readOnly/> }
   </div>
 );
 

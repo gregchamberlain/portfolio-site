@@ -5,6 +5,7 @@ const ProjectSchema = new mongoose.Schema({
   description: { type: String, required: true },
   githubUrl: String,
   liveUrl: String,
+  npmName: String,
   skillsUsed: [String],
   image: String
 }, {

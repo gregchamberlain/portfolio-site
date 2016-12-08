@@ -9,7 +9,7 @@ import styles from './styles.css';
 const ProjectSection = ({ data }) => (
   <div className={`${styles.section} ${styles.projects}`}>
     <h1 className={styles.sectionHeader}>Portfolio</h1>
-    { data.loading ? 'Loading...' : <ProjectList projects={data.projects} /> }
+    { data.loading ? 'Loading...' : <ProjectList projects={data.projects} readOnly /> }
   </div>
 );
 

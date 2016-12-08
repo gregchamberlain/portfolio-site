@@ -1,8 +1,17 @@
 import { Project, Job } from '../models';
+import axios from 'axios';
+
 import aws from 'aws-sdk';
 const s3 = new aws.S3();
 
 const resolveFunctions = {
+  Project: {
+    npmDownloads({ npmName }, { period }) {
+      if (!npmName) return null;
+      const url = `https://api.npmjs.org/downloads/point/${period}/${npmName}`;
+      return axios.get(url).then(resp => resp.data.downloads);
+    }
+  },
   Query: {
     projects() {
       return Project.find();
