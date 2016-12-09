@@ -4,6 +4,7 @@ import { HashRouter, Match, Link } from 'react-router';
 import Home from './home';
 import ProjectIndex from './projects';
 import JobIndex from './jobs';
+import Resume from './resume';
 
 class App extends Component {
 
@@ -17,6 +18,7 @@ class App extends Component {
           <Match exactly pattern="/" component={Home} />
           <Match exactly pattern="/projects" component={ProjectIndex} />
           <Match exactly pattern="/experience" component={JobIndex} />
+          <Match exactly pattern="/resume" component={Resume} />
         </div>
       </HashRouter>
     );

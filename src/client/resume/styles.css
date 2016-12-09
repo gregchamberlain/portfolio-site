@@ -1,0 +1,45 @@
+:local .container {
+  width: 8.5in;
+  height: 11in;
+  margin: 0 auto;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+}
+
+:local .background {
+  background-color: #ccc;
+  padding: 40px 0;
+}
+@media print {
+  :local .background {
+      padding: 0;
+  }
+}
+
+:local .header {
+  display: flex;
+  border-bottom: 2px solid #2196F3;
+  padding: 10px;
+}
+
+:local .name {
+  /*font-weight: bold;*/
+  font-size: 36px;
+  flex: 1;
+}
+
+:local .icon {
+  font-size: 24px;
+}
+
+:local .contact {
+  text-align: right;
+  line-height: 28px;
+}
+
+:local .sites {
+  display: flex;
+  font-size: 16px;
+  justify-content: space-around;
+}
