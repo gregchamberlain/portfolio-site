@@ -11,6 +11,7 @@
   background-color: #ccc;
   padding: 40px 0;
 }
+
 @media print {
   :local .background {
       padding: 0;
