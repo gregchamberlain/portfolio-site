@@ -8,8 +8,8 @@ import Phone from 'react-icons/lib/md/phone';
 
 import styles from './styles.css';
 
-import ProjectList from './ProjectList';
-import JobList from './JobList';
+import ProjectList from './projects/ProjectList';
+import JobList from './jobs/JobList';
 
 const Resume = () => (
   <div className={styles.background}>

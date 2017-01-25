@@ -5,7 +5,9 @@ import styles from './styles.css';
 const Section = ({ title, children }) => (
   <div>
     <div className={styles.sectionHeader}>{title}</div>
-    {children}
+    <div className={styles.section}>
+      {children}
+    </div>
   </div>
 );
 

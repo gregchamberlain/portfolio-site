@@ -53,3 +53,7 @@
   padding: 10px 0;
   text-decoration: underline;
 }
+
+:local .section {
+  padding: 10px;
+}
