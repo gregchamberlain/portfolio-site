@@ -15,14 +15,21 @@ const resolveFunctions = {
   Query: {
     name: () => 'Greg Chamberlain',
     about() {
-      return "Hi! I'm Greg, a software developer with a passion for writing clean, testable code, and contributing to the open-source community. I have experience working with the full stack, including knowledge of multiple languages and framework. Some applications I've developed use JavaScript, React, Redux, Ruby, Rails, Node.js, and GraphQL. I have a passion for modern web technologies (some of the ones I'm most excited about are React and GraphQL) and love continuously learning to expand my development skill set. Check out some of my recent projects (below) to see my engineering and design capabilities."
+      return "Hi! I'm Greg, a software developer with a passion for writing clean, testable code, and contributing to the open-source community. I have experience working with the full stack, including knowledge of multiple languages and framework. Some applications I've developed use JavaScript, React, Redux, Ruby, Rails, Node.js, and GraphQL. I have a passion for modern web technologies (some of the ones I'm most excited about are React and GraphQL) and love continuously learning to expand my development skill set. Check out some of my recent projects (below) to see my engineering and design capabilities.";
     },
     phone: () => '(715) 307-7746',
     email: () => 'gregchamberlain94@gmail.com',
     linkedIn: () => 'https://www.linkedin.com/in/greg-chamberlain',
     github: () => 'https://www.github.com/gregchamberlain',
-    projects() {
-      return Project.find();
+    projects(_, { ids }) {
+      if (ids) {
+        return Project.find({ _id: { $in: ids } });
+      } else {
+        return Project.find();
+      }
+    },
+    project(_, { id }) {
+      return Project.findById(id);
     },
     jobs() {
       return Job.find({}, null, { sort: '-createdAt' });

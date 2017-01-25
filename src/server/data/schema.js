@@ -27,7 +27,8 @@ type Query {
   email: String
   linkedIn: String
   github: String
-  projects: [Project]
+  projects(ids: [String]): [Project]
+  project(id: String!): Project
   jobs: [Job]
 }
 

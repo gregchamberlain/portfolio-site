@@ -8,6 +8,9 @@ import Phone from 'react-icons/lib/md/phone';
 
 import styles from './styles.css';
 
+import ProjectList from './ProjectList';
+import JobList from './JobList';
+
 const Resume = () => (
   <div className={styles.background}>
     <div className={styles.container}>
@@ -32,6 +35,8 @@ const Resume = () => (
           <div>(715) 307-7746 <Phone className={styles.icon} /></div>
         </div>
       </div>
+      <ProjectList />
+      <JobList />
     </div>
   </div>
 );

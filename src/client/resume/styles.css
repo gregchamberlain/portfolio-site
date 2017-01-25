@@ -20,7 +20,8 @@
 
 :local .header {
   display: flex;
-  border-bottom: 2px solid #2196F3;
+  /*border-bottom: 2px solid #2196F3;*/
+  border-bottom: 2px solid black;
   padding: 10px;
 }
 
@@ -43,4 +44,12 @@
   display: flex;
   font-size: 16px;
   justify-content: space-around;
+}
+
+:local .sectionHeader {
+  text-align: center;
+  font-size: 24px;
+  /*font-weight: bold;*/
+  padding: 10px 0;
+  text-decoration: underline;
 }
