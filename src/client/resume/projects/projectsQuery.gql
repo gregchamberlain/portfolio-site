@@ -1,0 +1,11 @@
+query Projects($ids: [String]) {
+  projects(ids: $ids) {
+    id
+    name
+    githubUrl
+    liveUrl
+    skillsUsed
+    brief
+    highlights
+  }
+}

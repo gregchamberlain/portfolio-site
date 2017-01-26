@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/gregchamberlain/react-apollo-fullstack-skeleton#readme",
   "dependencies": {
-    "apollo-client": "^0.5.6",
+    "apollo-client": "^0.5.26",
     "aws-sdk": "^2.7.11",
     "axios": "^0.15.3",
     "babel-cli": "^6.18.0",

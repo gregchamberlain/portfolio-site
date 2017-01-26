@@ -8,6 +8,8 @@ query Projects {
     npmName
     monthDownloads: npmDownloads(period: "last-month")
     skillsUsed
+    brief
+    highlights
     image
   }
 }

@@ -8,6 +8,8 @@ type Project {
   skillsUsed: [String]
   npmName: String
   npmDownloads(period: String!): Int
+  brief: String
+  highlights: [String]
   image: String
 }
 
@@ -40,6 +42,8 @@ input ProjectInput {
   liveUrl: String
   npmName: String
   skillsUsed: [String]
+  brief: String
+  highlights: [String]
   image: String
 }
 

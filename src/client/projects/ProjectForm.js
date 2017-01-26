@@ -16,6 +16,8 @@ const blankProject = {
   liveUrl: '',
   npmName: '',
   skillsUsed: [],
+  brief: '',
+  highlights: [],
   image: null
 };
 
@@ -73,6 +75,24 @@ class ProjectForm extends Component {
     }));
   }
 
+  updateHighlight = idx => e => {
+    this.setState(update(this.state, {
+      project: { highlights: { [idx]: { $set: e.target.value } } }
+    }));
+  }
+
+  addHighlight = () => {
+    this.setState(update(this.state, {
+      project: { highlights: { $push: [''] } }
+    }));
+  }
+
+  removeHighlight = idx => () => {
+    this.setState(update(this.state, {
+      project: { highlights: { $splice: [[idx, 1]] } }
+    }));
+  }
+
   setModal = bool => e => {
     this.setState({ isModalOpen: bool });
   }
@@ -85,7 +105,8 @@ class ProjectForm extends Component {
   }
 
   render() {
-    const { name, description, githubUrl, liveUrl, npmName, skillsUsed, image } = this.state.project;
+    const { name, description, githubUrl, liveUrl, npmName, brief, highlights, skillsUsed, image } = this.state.project;
+
     return (
       <div className={styles.container}>
         <div>
@@ -120,9 +141,23 @@ class ProjectForm extends Component {
             <textarea onChange={this.updateProject('description')} value={description || ''} />
           </div>
           <div>
+            <label>Brief</label>
+            <textarea onChange={this.updateProject('brief')} value={brief || ''} />
+          </div>
+          <div>
+            <label>highlights</label>
+            { highlights.map((highlight, idx) => (
+              <div key={`highlight-${idx}`}>
+                <input type="text" value={highlight} onChange={this.updateHighlight(idx)}/>
+                <button onClick={this.removeHighlight(idx)}>X</button>
+              </div>
+            ))}
+            <button onClick={this.addHighlight}>Add</button>
+          </div>
+          <div>
             <label>Skills Used</label>
             <Chips
-              value={this.state.project.skillsUsed}
+              value={skillsUsed}
               onChange={this.updateSkills}
               fromSuggestionsOnly={false}
             />

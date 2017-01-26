@@ -7,6 +7,8 @@ const ProjectSchema = new mongoose.Schema({
   liveUrl: String,
   npmName: String,
   skillsUsed: [String],
+  brief: String,
+  highlights: [String],
   image: String
 }, {
   timestamps: true
