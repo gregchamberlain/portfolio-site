@@ -11,6 +11,7 @@ const ProjectListItem = ({ project }) => (
       { project.liveUrl && <div>&nbsp;●&nbsp;</div> }
       { project.githubUrl && <a href={project.githubUrl} target="_blank">Github</a> }
     </div>
+    <div className="bold" style={{fontSize: 14}}>[{project.skillsUsed.join(', ')}]</div>
     <div>{project.brief}</div>
     <ul className={styles.highlights}>
     { project.highlights.map(highlight => <li key={highlight}>{highlight}</li>)}

@@ -23,7 +23,16 @@ const resolveFunctions = {
     github: () => 'https://www.github.com/gregchamberlain',
     projects(_, { ids }) {
       if (ids) {
-        return Project.find({ _id: { $in: ids } });
+        return new Promise(function(resolve, reject) {
+          Project.find({ _id: { $in: ids } }).then(projects => {
+            let idIndicies = {};
+            ids.forEach((id, idx) => { idIndicies[id] = idx; });
+            let sortedProjects = [];
+            projects.forEach(project => { sortedProjects[idIndicies[project.id]] = project; });
+            resolve(sortedProjects);
+          }).catch(err => reject(err));
+        });
+        // return Project.find({ _id: { $in: ids } });
       } else {
         return Project.find();
       }
