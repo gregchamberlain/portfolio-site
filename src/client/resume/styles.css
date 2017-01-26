@@ -57,3 +57,8 @@
 :local .section {
   padding: 10px;
 }
+
+:local .highlights {
+  margin: 5px 0;
+  font-size: 14px;
+}
