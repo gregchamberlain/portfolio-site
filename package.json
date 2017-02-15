@@ -11,7 +11,6 @@
     "buildServer": "NODE_ENV='production' ./node_modules/.bin/babel src/server --out-dir dist/server",
     "buildClient": "webpack --config webpack.config.prod.js --progress",
     "build": "npm run buildClient; npm run buildServer",
-    // "heroku-postbuild": "npm run build",
     "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
