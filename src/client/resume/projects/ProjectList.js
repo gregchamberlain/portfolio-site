@@ -13,5 +13,5 @@ const ProjectList = ({ data }) => data.loading ? <div>'Loading...'</div> : (
 );
 
 export default graphql(query, {
-  options: { variables: { ids: ['584107bfef442d27fc77b0a5', '5848fb106652c06ba7174162'] } }
+  options: { variables: { ids: ['584107bfef442d27fc77b0a5', '5848fb106652c06ba7174162', '58a3f10a4ffe4956d1e4d365'] } }
 })(ProjectList);
