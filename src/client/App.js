@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { HashRouter, Match, Link } from 'react-router';
+import { HashRouter, Route, Link } from 'react-router-dom';
+
+console.log(HashRouter, Route);
 
 import Home from './home';
 import ProjectIndex from './projects';
@@ -15,10 +17,10 @@ class App extends Component {
           {/* <Link to="/">Homodalme</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/experience">Experience</Link> */}
-          <Match exactly pattern="/" component={Home} />
-          <Match exactly pattern="/projects" component={ProjectIndex} />
-          <Match exactly pattern="/experience" component={JobIndex} />
-          <Match exactly pattern="/resume" component={Resume} />
+          <Route exactly pattern="/" component={Home} />
+          <Route exactly pattern="/projects" component={ProjectIndex} />
+          <Route exactly pattern="/experience" component={JobIndex} />
+          <Route exactly pattern="/resume" component={Resume} />
         </div>
       </HashRouter>
     );
