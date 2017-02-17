@@ -14,6 +14,9 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
 
+const cors = require('cors');
+app.use(cors());
+
 app.use(favicon(path.join(__dirname, '../../logo.ico')));
 
 app.use('/graphiql', graphiqlExpress({
@@ -27,8 +30,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 } 
 // else {
-  const cors = require('cors');
-  app.use(cors());
+  
 // }
 
 

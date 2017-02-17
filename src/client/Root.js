@@ -10,8 +10,11 @@ if (process.env.NODE_ENV === 'production') {
   config = { dataIdFromObject: o => o.id, shouldBatch: true };
 } else {
   config = {
-    // networkInterface: createNetworkInterface({ uri: 'http://gregchamberlain.tech/graphql' }),
-    networkInterface: createBatchingNetworkInterface({ uri: 'http://localhost:3001/graphql' }),
+    networkInterface: createBatchingNetworkInterface({
+      uri: 'http://gregchamberlain.tech/graphql',
+      batchInterval: 10
+    }),
+    // networkInterface: createBatchingNetworkInterface({ uri: 'http://localhost:3001/graphql' }),
     dataIdFromObject: o => o.id
   };
 }
