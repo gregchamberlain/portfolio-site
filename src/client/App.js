@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Link } from 'react-router-dom';
 
-console.log(HashRouter, Route);
-
 import Home from './home';
 import ProjectIndex from './projects';
 import JobIndex from './jobs';
@@ -18,8 +16,8 @@ class App extends Component {
           <Link to="/projects">Projects</Link>
           <Link to="/experience">Experience</Link> */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/projects" component={ProjectIndex} />
-          <Route exact path="/experience" component={JobIndex} />
+          { process.env.NODE_ENV === 'production' ? null : <Route exact path="/projects" component={ProjectIndex} /> }
+          { process.env.NODE_ENV === 'production' ? null : <Route exact path="/experience" component={JobIndex} /> }
           <Route exact path="/resume" component={Resume} />
         </div>
       </HashRouter>
