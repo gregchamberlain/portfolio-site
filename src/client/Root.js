@@ -7,16 +7,21 @@ import App from './App';
 
 let config;
 if (process.env.NODE_ENV === 'production') {
-  config = { dataIdFromObject: o => o.id, shouldBatch: true };
+  config = {
+    networkInterface: createBatchingNetworkInterface({
+      batchInterval: 10,
+    }),
+    dataIdFromObject: o => o.id
+  };
 } else {
   config = {
     networkInterface: createBatchingNetworkInterface({
-      uri: 'http://gregchamberlain.tech/graphql',
-      batchInterval: 10
+      uri: 'https://gregchamberlain.herokuapp.com/graphql',
+      batchInterval: 10,
     }),
-    // networkInterface: createBatchingNetworkInterface({ uri: 'http://localhost:3001/graphql' }),
+    // networkInterface: createNetworkInterface({ uri: 'http://localhost:3001/graphql' }),
     dataIdFromObject: o => o.id
-  };
+  };  
 }
 
 const client = new ApolloClient(config);
