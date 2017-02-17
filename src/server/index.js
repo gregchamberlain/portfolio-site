@@ -25,10 +25,12 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname, '../../index.html'));
   });
-} else {
+} 
+// else {
   const cors = require('cors');
   app.use(cors());
-}
+// }
+
 
 app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
 

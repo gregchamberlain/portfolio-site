@@ -1,5 +1,5 @@
 import React from 'react';
-import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import ApolloClient, { createBatchingNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
 import './styles.css';
@@ -11,9 +11,8 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   config = {
     // networkInterface: createNetworkInterface({ uri: 'http://gregchamberlain.tech/graphql' }),
-    networkInterface: createNetworkInterface({ uri: 'http://localhost:3001/graphql' }),
-    dataIdFromObject: o => o.id,
-    shouldBatch: true
+    networkInterface: createBatchingNetworkInterface({ uri: 'http://localhost:3001/graphql' }),
+    dataIdFromObject: o => o.id
   };
 }
 
