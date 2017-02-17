@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Link } from 'react-router-dom';
+import { HashRouter, Route, Link, Switch } from 'react-router-dom';
 
 import Home from './home';
 import ProjectIndex from './projects';
@@ -12,13 +12,13 @@ class App extends Component {
     return (
       <HashRouter>
         <div>
-          {/* <Link to="/">Homodalme</Link>
-          <Link to="/projects">Projects</Link>
-          <Link to="/experience">Experience</Link> */}
-          <Route exact path="/" component={Home} />
-          { process.env.NODE_ENV === 'production' ? null : <Route exact path="/projects" component={ProjectIndex} /> }
-          { process.env.NODE_ENV === 'production' ? null : <Route exact path="/experience" component={JobIndex} /> }
-          <Route exact path="/resume" component={Resume} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            { process.env.NODE_ENV === 'production' ? null : <Route exact path="/projects" component={ProjectIndex} /> }
+            { process.env.NODE_ENV === 'production' ? null : <Route exact path="/experience" component={JobIndex} /> }
+            <Route exact path="/resume" component={Resume} />
+            <Route component={() => <h1>Sorry this page does not exist! :( <Link to="/">Go Home</Link></h1>}/>
+          </Switch>
         </div>
       </HashRouter>
     );
