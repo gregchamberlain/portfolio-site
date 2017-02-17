@@ -17,10 +17,10 @@ class App extends Component {
           {/* <Link to="/">Homodalme</Link>
           <Link to="/projects">Projects</Link>
           <Link to="/experience">Experience</Link> */}
-          <Route exactly pattern="/" component={Home} />
-          <Route exactly pattern="/projects" component={ProjectIndex} />
-          <Route exactly pattern="/experience" component={JobIndex} />
-          <Route exactly pattern="/resume" component={Resume} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/projects" component={ProjectIndex} />
+          <Route exact path="/experience" component={JobIndex} />
+          <Route exact path="/resume" component={Resume} />
         </div>
       </HashRouter>
     );
