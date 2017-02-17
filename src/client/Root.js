@@ -9,6 +9,7 @@ let config;
 if (process.env.NODE_ENV === 'production') {
   config = {
     networkInterface: createBatchingNetworkInterface({
+      uri: '/graphql',
       batchInterval: 10,
     }),
     dataIdFromObject: o => o.id
