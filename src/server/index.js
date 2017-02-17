@@ -14,8 +14,18 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const app = express();
 
-const cors = require('cors');
-app.use(cors());
+
+const whitelist = [
+    // Allow domains here
+    'http://localhost:3000',
+];
+const corsOptions = {
+    origin(origin, callback){
+        const originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+        callback(null, originIsWhitelisted);
+    },
+    credentials: true
+};
 
 app.use(favicon(path.join(__dirname, '../../logo.ico')));
 
@@ -30,11 +40,12 @@ if (process.env.NODE_ENV === 'production') {
   });
 } 
 // else {
-  
+  const cors = require('cors');
+//   app.use(cors());
 // }
 
 
-app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }));
+app.use('/graphql', cors(corsOptions), bodyParser.json(), graphqlExpress({ schema }));
 
 const PORT = process.env.PORT || 3001;
 
