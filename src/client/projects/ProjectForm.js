@@ -120,35 +120,36 @@ class ProjectForm extends Component {
         </div>
         <div className={styles.info}>
           <div className={styles.name}>
-            <label>Name</label>
-            <input type="text" onChange={this.updateProject('name')} value={name} />
-            <div className="spacer"/>
+            <div className="spacer">
+              <label>Name</label>
+              <input className={styles.input} type="text" onChange={this.updateProject('name')} value={name} />
+            </div>
             <div>
               <label>Github URL</label>
-              <input type="text" onChange={this.updateProject('githubUrl')} value={githubUrl || ''} />
+              <input className={styles.input} type="text" onChange={this.updateProject('githubUrl')} value={githubUrl || ''} />
             </div>
             <div>
               <label>Live URL</label>
-              <input type="text" onChange={this.updateProject('liveUrl')} value={liveUrl || ''} />
+              <input className={styles.input} type="text" onChange={this.updateProject('liveUrl')} value={liveUrl || ''} />
             </div>
             <div>
               <label>NPM Name</label>
-              <input type="text" onChange={this.updateProject('npmName')} value={npmName || ''} />
+              <input className={styles.input} type="text" onChange={this.updateProject('npmName')} value={npmName || ''} />
             </div>
           </div>
           <div>
             <label>Description</label>
-            <textarea onChange={this.updateProject('description')} value={description || ''} />
+            <textarea className={styles.input} onChange={this.updateProject('description')} value={description || ''} />
           </div>
           <div>
             <label>Brief</label>
-            <textarea onChange={this.updateProject('brief')} value={brief || ''} />
+            <textarea className={styles.input} onChange={this.updateProject('brief')} value={brief || ''} />
           </div>
           <div>
             <label>highlights</label>
             { highlights.map((highlight, idx) => (
               <div key={`highlight-${idx}`}>
-                <input type="text" value={highlight} onChange={this.updateHighlight(idx)}/>
+                <input className={styles.input} type="text" value={highlight} onChange={this.updateHighlight(idx)}/>
                 <button onClick={this.removeHighlight(idx)}>X</button>
               </div>
             ))}

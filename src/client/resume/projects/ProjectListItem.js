@@ -5,7 +5,7 @@ import styles from '../styles.css';
 const ProjectListItem = ({ project }) => (
   <div>
     <div className="flex bold">
-      <div>{project.name}</div>
+      <div style={{color: '#455A64'}}>{project.name}</div>
       <span className="spacer" />
       { project.liveUrl && <a href={project.liveUrl} target="_blank">Live</a> }
       { project.liveUrl && <div>&nbsp;●&nbsp;</div> }

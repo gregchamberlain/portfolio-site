@@ -5,7 +5,7 @@ import styles from './styles.css';
 const JobListItem = ({ job }) => (
   <div style={{marginTop: 5}}>
     <div className="flex bold">
-      <div>{job.companyName}</div>
+      <div style={{color: '#455A64'}}>{job.companyName}</div>
       <span className="spacer" />
       <div>{job.duration}</div>
     </div>
