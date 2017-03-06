@@ -1,11 +1,12 @@
 :local .background {
   position: relative;
   height: 100vh;
-  background-image:
+  /*background-image:
     linear-gradient(
       to top right,
       #333, #555
-    );
+    );*/
+  background-color: #263238;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -62,23 +63,37 @@
 }
 
 :local .projects {
+  background-color: #0D47A1;
+  color: #eee;
+}
+/*:local .projects {
   background-color: #3F51B5;
   color: #eee;
-}
+}*/
 
 :local .jobs {
-  background: #673AB7;
+  background: #01579B;
   color: #eee;
 }
+/*:local .jobs {
+  background: #673AB7;
+  color: #eee;
+}*/
+
+/*:local .about {
+  text-align: center;
+  background-color: #2196F3;
+  color: #eee;
+}*/
 
 :local .about {
   text-align: center;
-  background-color: #2196F3;
+  background-color: #455A64;
   color: #eee;
 }
 
 :local .contact {
-  background-color: #9C27B0;
+  background-color: #0288D1;
   color: #eee;
   text-align: center;
   font-size: 24px;
